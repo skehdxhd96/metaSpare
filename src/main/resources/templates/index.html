@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/x-icon" href="#">
+
+  <link rel="stylesheet" href="./css/prism.css">
+  <link rel="stylesheet" href="./css/prism-line-numbers.css">
+  <link rel="stylesheet" href="./css/prism-toolbar.css">
+  <link rel="stylesheet" href="./css/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/dropzone.css">
+  <link rel="stylesheet" href="./css/materialdesignicons.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="./css/theme.css">
+
+
+</head>
+
+<body>
+
+  <div id="db-wrapper">
+
+
+    <!-- sidebar 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar pt-10">
+      <div class="nav-scroller">
+        <!-- Brand logo -->
+        <a class="navbar-brand" href="#">
+          <img src="img/cute.png" alt="" />
+        </a>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+          <li class="nav-item">
+            <a class="nav-link has-arrow" href="#">
+              <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
+            </a>
+          </li>
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link has-arrow @@if (context.page_group !== 'pages') { collapsed }" href="#!"
+              data-bs-toggle="collapse" data-bs-target="#navPages" aria-expanded="false" aria-controls="navPages">
+              <i data-feather="layers" class="nav-icon icon-xs me-2">
+              </i> Pages
+            </a>
+
+            <div id="navPages" class="collapse @@if (context.page_group === 'pages') { show }"
+              data-bs-parent="#sideNavbar">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'profile') { active }" href="@@webRoot/pages/profile.html">
+                    Profile
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link has-arrow  @@if (context.page === 'settings') { active } "
+                    href="@@webRoot/pages/settings.html">
+                    Settings
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </li>
+
+
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link has-arrow @@if (context.page_group !== 'authentication') { collapsed }" href="#!"
+              data-bs-toggle="collapse" data-bs-target="#navAuthentication" aria-expanded="false"
+              aria-controls="navAuthentication">
+              <i data-feather="lock" class="nav-icon icon-xs me-2">
+              </i> Authentication
+            </a>
+            <div id="navAuthentication" class="collapse @@if (context.page_group === 'authentication') { show }"
+              data-bs-parent="#sideNavbar">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'signin') { active }" href="@@webRoot/pages/sign-in.html">
+                    Sign In</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'signup') { active } " href="@@webRoot/pages/sign-up.html">
+                    Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'forgetpassword') { active }"
+                    href="@@webRoot/pages/forget-password.html">
+                    Forget Password
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+          <!-- Nav item -->
+          <li class="nav-item">
+            <a class="nav-link has-arrow @@if (context.page_group !== 'components') { collapsed }" href="#!"
+              data-bs-toggle="collapse" data-bs-target="#navComponents" aria-expanded="false"
+              aria-controls="navComponents">
+              <i data-feather="database" class="nav-icon icon-xs me-2">
+              </i> Components
+            </a>
+            <div id="navComponents" class="collapse @@if (context.page_group === 'components') { show }"
+              data-bs-parent="#sideNavbar">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'accordions') { active }"
+                    href="@@webRoot/components/accordions.html" aria-expanded="false">
+                    Accordions
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link @@if (context.page === 'tooltips') { active }"
+                    href="@@webRoot/components/tooltips.html" aria-expanded="false">
+                    Tooltips
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- sidebar 끝!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+
+    <div id="page-content">
+      <div class="header">
+        <!-- navbar -->
+        <nav class="navbar-classic navbar navbar-expand-lg fixed-top">
+          <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+          <div class="ms-lg-3 d-none d-md-none d-lg-block">
+           
+          </div>
+          <!--Navbar nav -->
+          <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+            <li class="dropdown stopevent">
+              <a class="btn btn-light btn-icon rounded-circle indicator
+                  indicator-primary text-muted" href="#" role="button" id="dropdownNotification"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-xs" data-feather="bell"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" aria-labelledby="dropdownNotification">
+                <div class="">
+                  <div class="border-bottom px-3 pt-2 pb-3 d-flex
+                      justify-content-between align-items-center">
+                    <p class="mb-0 text-dark fw-medium fs-4">Notifications</p>
+                    <a href="#" class="text-muted">
+                      <span>
+                        <i class="me-1 icon-xxs" data-feather="settings"></i>
+                      </span>
+                    </a>
+                  </div>
+                  <!-- List group -->
+                  <ul class="list-group list-group-flush notification-list-scroll">
+                    <!-- List group item -->
+                    <li class="list-group-item bg-light">
+
+
+                      <a href="#" class="text-muted">
+                        <h5 class="fw-bold mb-1">Rishi Chopra</h5>
+                        <p class="mb-0">
+                          Mauris blandit erat id nunc blandit, ac eleifend dolor pretium.
+                        </p>
+                      </a>
+
+
+
+                    </li>
+                    <!-- List group item -->
+                    <li class="list-group-item">
+
+
+                      <a href="#" class="text-muted">
+                        <h5 class="fw-bold mb-1">Neha Kannned</h5>
+                        <p class="mb-0">
+                          Proin at elit vel est condimentum elementum id in ante. Maecenas et sapien metus.
+                        </p>
+                      </a>
+
+
+
+                    </li>
+                    <!-- List group item -->
+                    <li class="list-group-item">
+
+
+                      <a href="#" class="text-muted">
+                        <h5 class="fw-bold mb-1">Nirmala Chauhan</h5>
+                        <p class="mb-0">
+                          Morbi maximus urna lobortis elit sollicitudin sollicitudieget elit vel pretium.
+                        </p>
+                      </a>
+
+
+
+                    </li>
+                    <!-- List group item -->
+                    <li class="list-group-item">
+
+
+                      <a href="#" class="text-muted">
+                        <h5 class="fw-bold mb-1">Sina Ray</h5>
+                        <p class="mb-0">
+                          Sed aliquam augue sit amet mauris volutpat hendrerit sed nunc eu diam.
+                        </p>
+                      </a>
+
+
+
+                    </li>
+                  </ul>
+                  <div class="border-top px-3 py-2 text-center">
+                    <a href="#" class="text-inherit fw-semi-bold">
+                      View all Notifications
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!-- List -->
+            <li class="dropdown ms-2">
+              <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md avatar-indicators avatar-online">
+                  <img alt="avatar" src="@@webRoot/assets/images/avatar/avatar-1.jpg" class="rounded-circle" />
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                <div class="px-4 pb-0 pt-2">
+
+
+                  <div class="lh-1 ">
+                    <h5 class="mb-1"> John E. Grainger</h5>
+                    <a href="#" class="text-inherit fs-6">View my profile</a>
+                  </div>
+                  <div class=" dropdown-divider mt-3 mb-2"></div>
+                </div>
+
+                <ul class="list-unstyled">
+
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="activity"></i>Activity Log
+                    </a>
+
+
+                  </li>
+
+                  <li>
+                    <a class="dropdown-item text-primary" href="#">
+                      <i class="me-2 icon-xxs text-primary dropdown-item-icon" data-feather="star"></i>Go Pro
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>Account Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="@@webRoot/index.html">
+                      <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>Sign Out
+                    </a>
+                  </li>
+                </ul>
+
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container-fluid px-6 py-4 mt-10">
+        <div class="row mb-5">
+          <div class="col-7 m-auto">
+            <!-- card -->
+            <div class="card">
+              <!-- card body -->
+              <div class="card-body">
+                <div class=" mb-6">
+                  <h4 class="fs-1 border-bottom text-sm-center">개인정보</h4>
+                </div>
+                <div class="row align-items-center">
+                  <!--사진 col 시작 -->
+                  <div class="col-4">
+                    <div class="d-flex justify-content-center">
+                      <img src="./img/cute.png" class="rounded-circle avatar avatar-xxxl" alt="">
+                    </div>
+
+                    <!-- 개인정보 사진 변경 삭제 버튼 시작 -->
+                    <!-- <div class="col-12 mt-3 m-auto d-flex justify-content-center">
+                  
+                        <button type="submit" class="btn btn-outline-white me-3">변경</button>
+                        <button type="submit" class="btn btn-outline-white">삭제</button>
+                    </div> -->
+                    <!-- 개인정보 사진 변경 삭제 버튼 끝 -->
+
+                  </div>
+                  <!--사진 col 끝 -->
+                  <div class="col-8">
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 생년월일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="email" class="col-sm-2 col-form-label
+                              form-label">생년월일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="email" class="form-control" placeholder="생년월일" id="birth" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 전화번호 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="phone" class="col-sm-2 col-form-label
+                              form-label">전화번호</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="Phone" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 주소 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="addressLine" class="col-sm-2 col-form-label
+                              form-label">주소</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="주소" id="addressLine" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 변경버튼 -->
+                    <!-- <div class="row align-items-center">
+                        <div class="offset-md-4 col-md-8 mt-4">
+                          <button type="submit" class="btn btn-primary"> Save
+                              Changes</button>
+                        </div>
+                      </div> -->
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">수정</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+          <div class="col-7 m-auto">
+            <!-- card -->
+            <div class="card">
+              <!-- card body -->
+              <div class="card-body">
+                <div class=" mb-6">
+                  <h4 class="fs-1 border-bottom text-sm-center">학적조회</h4>
+                </div>
+                <div class="row align-items-center">
+                  <!--왼쪽 col 시작 -->
+                  <div class="col-6">
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--왼쪽 col 끝 -->
+                  <div class="col-6">
+                    <!-- row 이름열 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="fullName" class="col-sm-2 col-form-label
+                            form-label">이름</label>
+                        <div class="col-md-8 col-12">
+                          <input type="name" class="form-control" placeholder="이름" id="name" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 생년월일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="email" class="col-sm-2 col-form-label
+                              form-label">생년월일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="email" class="form-control" placeholder="생년월일" id="birth" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 전화번호 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="phone" class="col-sm-2 col-form-label
+                              form-label">전화번호</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="Phone" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- row 이메일 -->
+                    <div class="mb-3 row">
+                      <div class="d-flex justify-content-center">
+                        <label for="location" class="col-sm-2 col-form-label
+                              form-label">이메일</label>
+                        <div class="col-md-8 col-12">
+                          <input type="text" class="form-control" placeholder="이메일" id="phone" required>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+                    <!-- row 변경버튼 -->
+                    <!-- <div class="row align-items-center">
+                        <div class="offset-md-4 col-md-8 mt-4">
+                          <button type="submit" class="btn btn-primary"> Save
+                              Changes</button>
+                        </div>
+                      </div> -->
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">수정</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+
+<script src="./js/jquery.js"></script>
+<script src="./js/bootstrap.bundle.js"></script>
+<script src="./js/jquery.slimscroll.js"></script>
+<script src="./js/feather.js"></script>
+<script src="./js/prism-core.js"></script>
+<script src="./js/prism-markup.js"></script>
+<script src="./js/prism-line-numbers.js"></script>
+<script src="./js/apexcharts.js"></script>
+<script src="./js/dropzone.js"></script>
+
+<!-- clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+<script src="./js/main.js"></script>
+<script src="./js/featherReplace.js"></script>
+<script src="./js/copyButton.js"></script>
+<script src="./js/sidebarMenu.js"></script>
