@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/include/head :: head"></div>
+    <title>Title</title>
+</head>
+<body>
+<!-- container -->
+<div class="container d-flex flex-column">
+    <div class="row align-items-center justify-content-center g-0
+        min-vh-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+            <!-- Card -->
+            <div class="card smooth-shadow-md">
+                <!-- Card body -->
+                <div class="card-body p-6">
+                    <div class="mb-4">
+                        <a href="index.html"><img src="img/cute.png" class="mb-2" alt=""></a>
+                    </div>
+                    <!-- Form -->
+                    <form>
+                        <!-- name -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">이름</label>
+                            <input type="text" id="name" class="form-control" name="name" placeholder="이름" required="">
+                        </div>
+                        <!-- username -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">아이디</label>
+                            <input type="text" id="username" class="form-control" name="username" placeholder="아이디" required="">
+                        </div>
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">비밀번호</label>
+                            <input type="password" id="password" class="form-control" name="password" placeholder="**************" required="">
+                        </div>
+                        <!-- Password confirm -->
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">비밀번호 확인</label>
+                            <input type="password" id="confirm-password" class="form-control" name="password" placeholder="**************" required="">
+                        </div>
+                        <!-- 학번 -->
+                        <div class="mb-3">
+                            <label for="stuId" class="form-label">학번</label>
+                            <input type="text" id="stuId" class="form-control" name="stuId" placeholder="학번" required="">
+                        </div>
+
+                        <!-- 이메일 -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">이메일</label>
+                            <input type="email" id="email" class="form-control" name="email" placeholder="이메일" required="">
+                        </div>
+
+                        <div>
+                            <!-- Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    회원가입
+                                </button>
+                            </div>
+                            <div class="d-md-flex justify-content-center mt-4">
+                                <div class="mb-2 mb-md-0">
+                                    <a href="sign-up.html" class="fs-5">로그인으로 가기</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/include/scripts :: scripts"></div>
+</body>
+</html>
