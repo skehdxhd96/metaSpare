@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="navbar">
+    <!-- navbar 시작!!!!!!!!!!!!!!!!! -->
+    <div class="header">
+        <!-- navbar -->
+        <nav class="navbar-classic navbar navbar-expand-lg fixed-top">
+            <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+            <div class="ms-lg-3 d-none d-md-none d-lg-block">
+            </div>
+            <!--Navbar nav -->
+            <ul class="navbar-nav navbar-right-wrap d-flex align-items-center col-4 m-auto">
+                <li class="col-5"></li>
+                <li class="">
+                    <a href="#">
+                        <img alt="logo" src="img/school_black.svg" class="icon">
+                    </a>
+                </li>
+                <li class="col-12"></li>
+
+
+                <!-- List -->
+                <li class="dropdown ">
+                    <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar avatar-md avatar-indicators avatar-online">
+                            <img alt="avatar" src="img/account_circle.svg" class="rounded-circle" />
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                        <div class="px-4 pb-0 pt-2">
+                            <div class="lh-1 ">
+                                <h5 class="mb-1 text-center"> 스누피 (이름)</h5>
+                            </div>
+                            <div class=" dropdown-divider mt-3 mb-2"></div>
+                        </div>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="dropdown-item text-primary" href="#">
+                                    <i class="me-2 icon-xxs text-primary dropdown-item-icon" data-feather="star"></i>내정보
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="settings"></i>로그인
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>로그아웃
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- navbar 끝!!!!!!!!!!!!!!-->
+</th:block>
+
+</html>
