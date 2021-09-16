@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/include/head :: head"></div>
+    <title>Title</title>
+</head>
+<body>
+    <!-- container -->
+    <div class="container d-flex flex-column">
+        <div class="row align-items-center justify-content-center g-0
+            min-vh-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xxl-4 py-8 py-xl-0">
+                <!-- Card -->
+                <div class="card smooth-shadow-md">
+                    <!-- Card body -->
+                    <div class="card-body p-6">
+                        <div class="mb-4 d-flex">
+                            <a class="m-auto" href="/hello"><img src="/img/cute.png" alt=""></a>
+                        </div>
+                        <!-- Form -->
+                        <form>
+                            <!-- Username -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label">아이디</label>
+                                <input type="text" id="username" class="form-control" name="username" placeholder="아이디" required="">
+                            </div>
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">비밀번호</label>
+                                <input type="password" id="password" class="form-control" name="password" placeholder="**************" required="">
+                            </div>
+
+                            <div>
+                                <!-- Button -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">로그인</button>
+                                </div>
+
+                                <div class="d-md-flex justify-content-between mt-4">
+                                    <div class="mb-2 mb-md-0">
+                                        <div href="sign-up.html" class="fs-5"></div>
+                                    </div>
+                                    <div>
+                                        <a href="forget-password.html" class="text-inherit fs-5">회원가입</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/include/scripts :: scripts"></div>
+</body>
+</html>

@@ -10,6 +10,11 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "index.html";
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
 }
