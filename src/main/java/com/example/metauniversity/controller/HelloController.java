@@ -10,7 +10,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "index";
+        return "info";
     }
 
     @GetMapping("/login")
@@ -20,5 +20,9 @@ public class HelloController {
     @GetMapping("/register")
     public String register(){
         return "register";
+    }
+    @GetMapping("/home")
+    public String home() {
+        return "home";
     }
 }
