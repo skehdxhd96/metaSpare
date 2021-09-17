@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/helloWorld/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }
 
@@ -32,7 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-                .antMatchers("/**");
+                .antMatchers(
+                    "/css/**",
+                    "/js/**",
+                    "/img/**"
+                    );
 
     }
 }
