@@ -17465,5 +17465,15 @@ body {
   margin-bottom: 4px;
   font-weight: 600 !important; }
 
+
+.bg-image-full {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 80vh;
+}
+
 pre[class*="language-"].line-numbers {
   position: initial; }
