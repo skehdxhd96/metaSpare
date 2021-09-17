@@ -5,3 +5,6 @@
         enabled: true
     freemarker:
       cache: false
+
+  server:
+    port: 9090
