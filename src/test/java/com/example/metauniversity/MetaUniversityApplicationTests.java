@@ -1,13 +1,13 @@
-package com.example.metauniversity;
+//package com.example.metauniversity;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class MetaUniversityApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
-
-}
+//@SpringBootTest(properties = "spring.config.location=" +
+//        "classpath:application.yml")
+//class MetaUniversityApplicationTests {
+//
+//    @Test
+//    void contextLoads() {
+//    }
+//}

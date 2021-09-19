@@ -18,17 +18,24 @@
                             <a class="m-auto" href="/hello"><img src="/img/cute.png" alt=""></a>
                         </div>
                         <!-- Form -->
-                        <form>
+                        <form th:action="@{login}" method="POST">
+<!--                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
                             <!-- Username -->
                             <div class="mb-3">
                                 <label for="username" class="form-label">아이디</label>
-                                <input type="text" id="username" class="form-control" name="username" placeholder="아이디" required="">
+                                <input type="text" id="username" class="form-control" name="username" placeholder="아이디를 입력하세요" required="">
                             </div>
                             <!-- Password -->
                             <div class="mb-3">
                                 <label for="password" class="form-label">비밀번호</label>
-                                <input type="password" id="password" class="form-control" name="password" placeholder="**************" required="">
+                                <input type="password" id="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요" required="">
                             </div>
+
+<!--                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+<!--                                email : <input type="text" name="username"> <br>-->
+<!--                                password : <input type="password" name="password"> <br>-->
+<!--                                <button type="submit">Login</button>-->
+<!--                            </form> <br>-->
 
                             <div>
                                 <!-- Button -->
@@ -41,7 +48,7 @@
                                         <div href="sign-up.html" class="fs-5"></div>
                                     </div>
                                     <div>
-                                        <a href="forget-password.html" class="text-inherit fs-5">회원가입</a>
+                                        <a href="/register" class="text-inherit fs-5">회원가입</a>
                                     </div>
                                 </div>
                             </div>
