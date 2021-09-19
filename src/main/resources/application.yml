@@ -1,7 +1,33 @@
-
-  spring:
-    devtools:
-      livereload:
-        enabled: true
+#JPA
+spring:
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
     freemarker:
       cache: false
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/meta?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type: trace

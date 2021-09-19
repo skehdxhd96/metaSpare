@@ -33,5 +33,8 @@ out/
 /nbdist/
 /.nb-gradle/
 
+### Docker Volume ###
+db_volume
+
 ### VS Code ###
 .vscode/
