@@ -1,15 +1,21 @@
 package com.example.metauniversity.service;
 
+import com.example.metauniversity.config.FolderConfig;
+import com.example.metauniversity.domain.File.File;
+import com.example.metauniversity.domain.File.UserFile;
 import com.example.metauniversity.domain.User.User;
 import com.example.metauniversity.domain.User.UsersData;
 import com.example.metauniversity.domain.User.dto.userDto;
 import com.example.metauniversity.exception.NoSuchUserException;
+import com.example.metauniversity.repository.UserFileRepository;
 import com.example.metauniversity.repository.UserRepository;
 import com.example.metauniversity.repository.UsersDataRepository;
 import com.example.metauniversity.security.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Locale;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,6 +25,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final UsersDataRepository usersDataRepository;
     private final CustomUserDetailsService customUserDetailsService;
+    private final UserFileRepository userFileRepository;
+    private final FileService fileService;
+    private final FolderConfig folderConfig;
 
     @Transactional
     public void saveUser(userDto.signIn signindto) {
@@ -41,5 +50,16 @@ public class UserService {
 
     public userDto.getMyInfoResponse getUserInfo(Long id) {
         return new userDto.getMyInfoResponse(userRepository.getMyInfo(id));
+    }
+
+    @Transactional
+    public userDto.updateResponse updateMyInfo(userDto.update updateDto, User user) {
+
+        File file = fileService.uploadThumbnailImage(folderConfig.getUser(), updateDto.getThumbnail());
+        userFileRepository.save(UserFile.create(file, user));
+
+        return  userDto.updateResponse.builder()
+                .thumbnailUrl(file.getUrl())
+                .build();
     }
 }

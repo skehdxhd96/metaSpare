@@ -37,4 +37,16 @@ public class UserController {
         model.addAttribute("userData", userService.getUserInfo(currentUser.getUser().getId()));
         return "/info";
     }
+
+    /**
+     * 내 정보 수정(파일업로드)
+     */
+    @PostMapping("/user/info/modify")
+    public String updateMyInfo(Model model, @AuthenticationPrincipal CustomUserDetails currentUser, @ModelAttribute userDto.update updateDto) {
+
+        userDto.updateResponse updateResponse = userService.updateMyInfo(updateDto, currentUser.getUser());
+
+        model.addAttribute("thumbnail", updateResponse.getThumbnailUrl());
+        return "/info";
+    }
 }

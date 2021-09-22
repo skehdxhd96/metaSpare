@@ -38,8 +38,8 @@ public class CustomUserDetails implements UserDetails {
                 authorities,
                 user);
     }
-
-    @Override
+    
+	@Override
     public String getPassword() {
         return this.user.getUserPassword();
     }
