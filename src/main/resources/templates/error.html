@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta th:replace="/include/head :: head"/>
+    <title>에러페이지</title>
+</head>
+<body>
+    <!-- Error page -->
+    <div class="container min-vh-100 d-flex justify-content-center
+              align-items-center">
+        <!-- row -->
+        <div class="row">
+            <!-- col -->
+            <div class="col-12">
+                <!-- content -->
+                <div class="text-center">
+                    <!-- text -->
+                    <h1 class="display-4 fw-bold">페이지를 찾을 수 없습니다.</h1>
+                    <p class="mb-4">요청하신 페이지가 제거되었거나, 이름이 변경되었거나, 일시적으로 사용이 중단되었습니다.</p>
+                    <!-- button -->
+                    <a href="#" class="btn btn-primary">홈</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/include/scripts :: scripts"></div>
+</body>
+</html>
+

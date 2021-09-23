@@ -24,4 +24,13 @@ public class HelloController {
     public String home() {
         return "home";
     }
+    @GetMapping("/denied")
+    public String denied() {
+        return "error";
+    }
+    @GetMapping("/boardList")
+    public String boardList(){
+        return "boardList";
+    }
+
 }
