@@ -1,5 +1,6 @@
 package com.example.metauniversity.controller;
 
+import com.example.metauniversity.domain.User.EnrollmentStatus;
 import com.example.metauniversity.domain.User.dto.userDto;
 import com.example.metauniversity.security.CustomUserDetails;
 import com.example.metauniversity.service.UserService;
@@ -42,11 +43,23 @@ public class UserController {
      * 내 정보 수정(파일업로드)
      */
     @PostMapping("/user/info/modify")
-    public String updateMyInfo(Model model, @AuthenticationPrincipal CustomUserDetails currentUser, @ModelAttribute userDto.update updateDto) {
+    public String updateMyInfo(@AuthenticationPrincipal CustomUserDetails currentUser,
+                               @ModelAttribute userDto.update updateDto) {
 
-        userDto.updateResponse updateResponse = userService.updateMyInfo(updateDto, currentUser.getUser());
+        userService.updateMyInfo(updateDto, currentUser.getUser());
 
-        model.addAttribute("thumbnail", updateResponse.getThumbnailUrl());
-        return "/info";
+        return "redirect:/user/info";
+    }
+
+    /**
+     * 휴학, 복학 신청
+     */
+    @PostMapping("/user/enrollChange")
+    public String applyLeave(EnrollmentStatus enrollmentStatus,
+                             @AuthenticationPrincipal CustomUserDetails currentUser) {
+
+        userService.applyLeave(currentUser.getUser().getId(), enrollmentStatus);
+
+        return "redirect:/user/info";
     }
 }

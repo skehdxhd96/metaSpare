@@ -2,6 +2,7 @@ package com.example.metauniversity.domain.User;
 
 import com.example.metauniversity.domain.Base.BaseEntity;
 import com.example.metauniversity.domain.File.UserFile;
+import com.example.metauniversity.domain.User.dto.userDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,10 +19,10 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userfileId")
+    @OneToOne(mappedBy = "user")
     private UserFile userfile;
 
     @OneToOne(fetch = FetchType.LAZY)

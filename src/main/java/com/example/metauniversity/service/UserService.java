@@ -3,6 +3,7 @@ package com.example.metauniversity.service;
 import com.example.metauniversity.config.FolderConfig;
 import com.example.metauniversity.domain.File.File;
 import com.example.metauniversity.domain.File.UserFile;
+import com.example.metauniversity.domain.User.EnrollmentStatus;
 import com.example.metauniversity.domain.User.User;
 import com.example.metauniversity.domain.User.UsersData;
 import com.example.metauniversity.domain.User.dto.userDto;
@@ -53,13 +54,22 @@ public class UserService {
     }
 
     @Transactional
-    public userDto.updateResponse updateMyInfo(userDto.update updateDto, User user) {
+    public void updateMyInfo(userDto.update updateDto, User user) {
 
-        File file = fileService.uploadThumbnailImage(folderConfig.getUser(), updateDto.getThumbnail());
-        userFileRepository.save(UserFile.create(file, user));
+        if(updateDto.getThumbnail().getOriginalFilename().length() != 0) {
+            File file = fileService.uploadThumbnailImage(folderConfig.getUser(), updateDto.getThumbnail());
+            userFileRepository.save(UserFile.create(file, user));
+        }
 
-        return  userDto.updateResponse.builder()
-                .thumbnailUrl(file.getUrl())
-                .build();
+        usersDataRepository.findById(user.getUsersData().getUserCode())
+                .orElseThrow(() -> new NoSuchUserException("수정할 사용자가 존재하지 않습니다.")).update(updateDto);
+    }
+
+    // 휴학, 복학 신청
+    @Transactional
+    public void applyLeave(Long id, EnrollmentStatus enrollmentStatus) {
+        UsersData usersData = userRepository.getMyInfo(id).getUsersData();
+
+        usersData.updateEnroll(enrollmentStatus);
     }
 }

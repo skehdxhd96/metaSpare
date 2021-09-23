@@ -21,8 +21,7 @@ public class File extends BaseEntity {
     @Column(name = "File_Id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userfileId")
+    @OneToOne(mappedBy = "file")
     private UserFile userFile;
 
     private String extension; // 확장자

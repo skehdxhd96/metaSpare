@@ -70,7 +70,7 @@ public class userDto {
             this.userGrade = user.getUsersData().getUserGrade();
             this.enrollmentStatus = user.getUsersData().getEnrollmentStatus();
             this.accountId = user.getAccountId();
-            this.thumbnailUrl = null;
+            this.thumbnailUrl = user.getUsersData().getIsThumbnail() ? user.getUserfile().getFile().getUrl() : "img/cute.png";
         }
     }
 
@@ -81,6 +81,11 @@ public class userDto {
     @NoArgsConstructor
     public static class update {
         private MultipartFile thumbnail;
+        private String userName;
+        private String userEmail;
+        private String Address;
+        private String userBirth;
+        private String userPhone;
     }
 
     @Getter

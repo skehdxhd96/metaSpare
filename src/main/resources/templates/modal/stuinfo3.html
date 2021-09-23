@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <th:block th:frgment="stuinfo2">
+
+        <!--모달 학적 변경-->
+        <div class="modal fade" id="stuinfo3" tabindex="-1" aria-labelledby="stuinfo3" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header p-3">
+                        <div>
+                            <h4 class="mb-0" id="stuinfo3Label" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">휴학 신청</h4>
+                            <h4 class="mb-0" id="stuinfo3Label" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">복학 신청</h4>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <div class="modal-body p-5">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <form method="POST" th:action="@{/user/enrollChange}" >
+                                <div class=" mb-6" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">
+                                    <h4 class="fs-1 text-sm-center">휴학 신청</h4>
+                                    <input type="hidden" name="enrollmentStatus" value="LEAVE">
+                                </div>
+                                
+                                <div class=" mb-6" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">
+                                    <h4 class="fs-1 text-sm-center">복학 신청</h4>
+                                    <input type="hidden" name="enrollmentStatus" value="ATTENDING">
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="d-flex justify-content-center">
+                                        <button type="sumbit" class="btn btn-primary m-2">신청</button>
+                                        <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">취소</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--학적 모달 끝-->
+    </th:block>
+</body>
+</html>

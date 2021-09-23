@@ -29,7 +29,7 @@
                                     <!--사진 col 시작 -->
                                     <div class="col-4">
                                         <div class="d-flex justify-content-center">
-                                            <img src="./img/cute.png" class="rounded-circle avatar avatar-xxxl" id="fileImg" alt="">
+                                            <img th:src="${userData.thumbnailUrl}" class="rounded-circle avatar avatar-xxxl" id="fileImg" alt="">
                                         </div>
                                         <input class="d-none" type="file" id="file" onchange="setThumbnail(event)" name="thumbnail">
                                         <div class="btn btn-primary d-flex justify-content-center mt-3" onclick="document.getElementById('file').click()">사진 업로드</div>
@@ -42,7 +42,7 @@
                                                 <label for="nameModal" class="col-sm-2 col-form-label
                                             form-label">이름</label>
                                                 <div class="col-md-8 col-12">
-                                                    <input type="name" name="userName" class="form-control" placeholder="이름" id="nameModal" required>
+                                                    <input type="name" class="form-control" name="userName" th:value="${userData.userName}" id="nameModal" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@
                                                 <label for="birthModal" class="col-sm-2 col-form-label
                                               form-label">생년월일</label>
                                                 <div class="col-md-8 col-12">
-                                                    <input type="email" name="userBirth" class="form-control" placeholder="생년월일" id="birthModal" required>
+                                                    <input type="text" class="form-control" name="userBirth" th:value="${userData.userBirth}" id="birthModal" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,7 +64,7 @@
                                                 <label for="phoneModal" class="col-sm-2 col-form-label
                                               form-label">전화번호</label>
                                                 <div class="col-md-8 col-12">
-                                                    <input type="text" name="userPhone" class="form-control" placeholder="Phone" id="phoneModal" required>
+                                                    <input type="text" class="form-control" name="userPhone" th:value="${userData.userPhone}" id="phoneModal" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@
                                                 <label for="emailModal" class="col-sm-2 col-form-label
                                               form-label">이메일</label>
                                                 <div class="col-md-8 col-12">
-                                                    <input type="text" name="userEmail" class="form-control" placeholder="이메일" id="emailModal" required>
+                                                    <input type="email" class="form-control" name="userEmail" th:value="${userData.userEmail}" id="emailModal" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                                 <label for="addressModal" class="col-sm-2 col-form-label
                                               form-label">주소</label>
                                                 <div class="col-md-8 col-12">
-                                                    <input type="text" name="userAddress" class="form-control" placeholder="주소" id="addressModal" required>
+                                                    <input type="text" class="form-control" name="Address" th:value="${userData.Address}" id="addressModal" required>
                                                 </div>
                                             </div>
                                         </div>

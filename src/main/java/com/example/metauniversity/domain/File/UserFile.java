@@ -20,10 +20,12 @@ public class UserFile {
     @Column(name = "userfileId")
     private Long id;
 
-    @OneToOne(mappedBy = "userfile")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
     private User user;
 
-    @OneToOne(mappedBy = "userFile")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "File_Id")
     private File file;
 
     public static UserFile create(File file, User user) {
