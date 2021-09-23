@@ -1,13 +1,19 @@
 package com.example.metauniversity.domain.User;
 
 import com.example.metauniversity.domain.Base.BaseEntity;
+import com.example.metauniversity.domain.User.dto.userDto.getMyInfoResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "usersData")
 @Getter
+@DynamicUpdate
 public class UsersData {
 
     @Id
@@ -41,4 +47,18 @@ public class UsersData {
      * Worker
      */
     private String workerSpot;
+    
+    // 개인 정보 수정
+    public void updateData(getMyInfoResponse usersdto) {
+		this.userName = usersdto.getUserName();
+    	this.userBirth = usersdto.getUserBirth();
+    	this.userPhone = usersdto.getUserPhone();
+    	this.userEmail = usersdto.getUserEmail();
+    	this.Address = usersdto.getAddress();
+	}
+    
+    // 휴학, 복학 신청
+    public void updateEnroll(EnrollmentStatus enrollmentStatus) {
+		this.enrollmentStatus = enrollmentStatus;
+	}
 }

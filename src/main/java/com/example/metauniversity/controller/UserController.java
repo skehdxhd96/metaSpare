@@ -1,5 +1,7 @@
 package com.example.metauniversity.controller;
 
+import com.example.metauniversity.domain.User.EnrollmentStatus;
+import com.example.metauniversity.domain.User.UsersData;
 import com.example.metauniversity.domain.User.dto.userDto;
 import com.example.metauniversity.security.CustomUserDetails;
 import com.example.metauniversity.service.UserService;
@@ -36,5 +38,28 @@ public class UserController {
     public String getMyInfo(Model model, @AuthenticationPrincipal CustomUserDetails currentUser) {
         model.addAttribute("userData", userService.getUserInfo(currentUser.getUser().getId()));
         return "/info";
+    }
+    
+    /**
+     * 내 정보 수정 
+     */
+    @PostMapping("/user/infoEdit")
+    public String myInfoeEdit(@ModelAttribute userDto.getMyInfoResponse usersdto,
+                      Model model, @AuthenticationPrincipal CustomUserDetails currentUser) {
+       
+    	userService.updateInfo(currentUser.getUser().getId(), usersdto);
+    	
+        return "redirect:/user/info";
+    }
+    
+    /**
+     * 휴학, 복학 신청
+     */
+    @PostMapping("/user/enrollChange")
+    public String applyLeave(EnrollmentStatus enrollmentStatus, Model model, @AuthenticationPrincipal CustomUserDetails currentUser) {
+    	
+    	userService.applyLeave(currentUser.getUser().getId(), enrollmentStatus);
+    	
+        return "redirect:/user/info";
     }
 }
