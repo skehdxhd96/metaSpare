@@ -55,8 +55,7 @@ dependencies {
      * QueryDSL
      */
     implementation 'com.querydsl:querydsl-jpa'
-    implementation 'com.querydsl:querydsl-apt' //eclipse
-<<<<<<< HEAD
+//    implementation 'com.querydsl:querydsl-apt' //eclipse
 
     /**
      * Spring-Cloud
@@ -64,24 +63,18 @@ dependencies {
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.6.RELEASE'
     implementation platform('software.amazon.awssdk:bom:2.13.33')
     implementation 'software.amazon.awssdk:s3'
-=======
->>>>>>> 0f1efda01fa0460460dac6170b4b9a7b4ef673ed
 }
 
 test {
     useJUnitPlatform()
 }
 
-<<<<<<< HEAD
-//querydsl 異붽� �떆�옉
-=======
 //querydsl 추가 시작
->>>>>>> 0f1efda01fa0460460dac6170b4b9a7b4ef673ed
-//def querydslDir = "$buildDir/generated/querydsl"
-def querydslDir = "src/main/generated/querydsl" //eclipse
+def querydslDir = "$buildDir/generated/querydsl"
+//def querydslDir = "src/main/generated/querydsl" //eclipse
 
 querydsl {
-	library = "com.querydsl:querydsl-apt" //eclipse
+//	library = "com.querydsl:querydsl-apt" //eclipse
     jpa = true
     querydslSourcesDir = querydslDir
 }
