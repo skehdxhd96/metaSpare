@@ -51,6 +51,7 @@ dependencies {
      * QueryDSL
      */
     implementation 'com.querydsl:querydsl-jpa'
+    implementation 'com.querydsl:querydsl-apt' //eclipse
 }
 
 test {
@@ -58,9 +59,11 @@ test {
 }
 
 //querydsl 추가 시작
-def querydslDir = "$buildDir/generated/querydsl"
+//def querydslDir = "$buildDir/generated/querydsl"
+def querydslDir = "src/main/generated/querydsl" //eclipse
 
 querydsl {
+	library = "com.querydsl:querydsl-apt" //eclipse
     jpa = true
     querydslSourcesDir = querydslDir
 }
