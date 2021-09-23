@@ -2,72 +2,48 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta th:replace="/include/head :: head"/>
+    <meta th:replace="/include/head :: head" />
     <title>메타넷대학교</title>
 </head>
 
 <body>
-    <div id="db-wrapper" class="toggled">
+<div id="db-wrapper" class="toggled">
     <!--sidebar 삽입  -->
     <div th:replace="/include/sidebar :: sidebar"></div>
-        <div id="page-content">
+    <div id="page-content">
         <div th:replace="/include/navbar :: navbar"></div>
         <div class="text-center">
             <img class="pt-9 bg-image-full" src="/img/main_pic.jpg" alt="..." />
         </div>
-            <div class="container-fluid mt-5">
-                <div class="row">
-                    <div class="col-8 m-auto">
-                        <!-- table -->
-                        <div class="table-responsive mb-3">
-                            <table class="table table-borderless text-center bg-white">
-                                <thead class="table-light">
-                                <tr>
-                                    <th class="w-75 text-center">공지사항</th>
-                                </tr>
-                                </thead>
 
-                                <tbody>
-                                <!--공지사항 반복문돌리기!!!!!!!!!!!!!-->
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-top-0">
-                                        안녕하세요 첫홈페이지입니다
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-8 m-auto">
+                    <!-- table -->
+                    <div class="table-responsive mb-3">
+                        <table class="table table-borderless text-center bg-white">
+                            <thead class="table-light">
+                            <tr>
+                                <th class="fs-4">공지사항</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <!--공지사항 반복문돌리기!!!!!!!!!!!!!-->
+
+                            <tr>
+<!--                            <tr th:each="">-->
+                                <td th:text="${'안녕하세요 데이터 넣어주세요'}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <div th:replace="/include/scripts :: scripts"></div>
 </body>
-</html>
 
+</html>

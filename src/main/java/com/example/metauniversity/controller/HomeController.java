@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Controller
-public class HelloController {
+public class HomeController {
 
     @GetMapping("/info")
     public String hello() {
@@ -24,4 +24,13 @@ public class HelloController {
     public String home() {
         return "home";
     }
+    @GetMapping("/denied")
+    public String denied() {
+        return "error";
+    }
+    @GetMapping("/boardList")
+    public String boardList(){
+        return "boardList";
+    }
+
 }

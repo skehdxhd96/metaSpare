@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta th:replace="/include/head :: head" />
+    <title>메타넷대학교</title>
+</head>
+
+<body>
+<div id="db-wrapper" class="toggled">
+    <!--sidebar 삽입  -->
+    <div th:replace="/include/sidebar :: sidebar"></div>
+    <div id="page-content">
+        <div th:replace="/include/navbar :: navbar"></div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-center vh-100">
+                <div class="col-xl-8 m-auto">
+                    <div class="card smooth-shadow-md">
+                        <div class="card-body">
+
+                            <div class="d-flex my-3 justify-content-end">
+                                <a href="#" class="d-none d-sm-inline-block btn btn-outline-primary">공지사항 등록</a>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <h2 href="#" class="text-decoration-none">공지사항</h2>
+                            </div>
+                            <table class="table table-bordered text-center mt-2 mb-5">
+
+                                <tr>
+                                    <td>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-12">
+                                                <a href="#" class="text-decoration-none">hi</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-12">
+                                                <a href="#" class="text-decoration-none">hi</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-12">
+                                                <a href="#" class="text-decoration-none">hi</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <!-- 페이징 처리 부분  -->
+                            <ul class="pagination justify-content-center">
+                                <!--  이전  -->
+
+                                <li class="page-item">
+                                    <a class="page-link" href="#">이전</a>
+                                </li>
+
+                                <!--  페이지 버튼  -->
+
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+
+                                <!--  다음  -->
+
+                                <li class="page-item">
+                                    <a class="page-link" href="#">다음</a>
+                                </li>
+
+                            </ul>
+                            <!-- 페이징 처리 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/include/scripts :: scripts"></div>
+</body>
+
+</html>
