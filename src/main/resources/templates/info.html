@@ -225,6 +225,10 @@
                   <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#stuinfo2">수정</button>
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#stuinfo3" style="margin-left: 5px;" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">휴학 신청</button>
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#stuinfo3" style="margin-left: 5px;" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">복학 신청</button>
                   </div>
                 </div>
               </div>
@@ -240,6 +244,8 @@
   <div th:replace="/modal/stuinfo1"></div>
 
   <div th:replace="/modal/stuinfo2"></div>
+  
+  <div th:replace="/modal/stuinfo3"></div>
 
 
   </div>

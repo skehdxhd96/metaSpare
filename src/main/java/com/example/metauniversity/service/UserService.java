@@ -1,8 +1,10 @@
 package com.example.metauniversity.service;
 
+import com.example.metauniversity.domain.User.EnrollmentStatus;
 import com.example.metauniversity.domain.User.User;
 import com.example.metauniversity.domain.User.UsersData;
 import com.example.metauniversity.domain.User.dto.userDto;
+import com.example.metauniversity.domain.User.dto.userDto.getMyInfoResponse;
 import com.example.metauniversity.exception.NoSuchUserException;
 import com.example.metauniversity.repository.UserRepository;
 import com.example.metauniversity.repository.UsersDataRepository;
@@ -42,4 +44,22 @@ public class UserService {
     public userDto.getMyInfoResponse getUserInfo(Long id) {
         return new userDto.getMyInfoResponse(userRepository.getMyInfo(id));
     }
+    
+    // 개인 정보 수정
+    @Transactional 
+    public void updateInfo(Long id, userDto.getMyInfoResponse usersdto) {
+    	UsersData usersData = userRepository.getMyInfo(id).getUsersData();
+    	
+    	usersData.updateData(usersdto);
+    }
+
+    // 휴학, 복학 신청
+    @Transactional 
+	public void applyLeave(Long id, EnrollmentStatus enrollmentStatus) {
+		UsersData usersData = userRepository.getMyInfo(id).getUsersData();
+    	
+		usersData.updateEnroll(enrollmentStatus);
+		
+	}
+
 }
