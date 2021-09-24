@@ -96,4 +96,39 @@ public class userDto {
     public static class updateResponse {
         private String thumbnailUrl;
     }
+
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class searchDto {
+        private String userDepartment;
+        private String userName;
+        private String userMajor;
+        private String userCode;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class searchResponse {
+        private String userCode;
+        private String userDepartment;
+        private String userMajor;
+        private String userName;
+        private String userGrade;
+        private EnrollmentStatus enrollmentStatus;
+
+        public searchResponse(User user) {
+            userCode = user.getUsersData().getUserCode();
+            userDepartment = user.getUsersData().getUserDepartment();
+            userMajor = user.getUsersData().getUserMajor();
+            userGrade = user.getUsersData().getUserMajor();
+            enrollmentStatus = user.getUsersData().getEnrollmentStatus();
+            userName = user.getUsersData().getUserName();
+        }
+    }
 }

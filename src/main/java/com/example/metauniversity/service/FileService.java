@@ -2,8 +2,7 @@ package com.example.metauniversity.service;
 
 import com.example.metauniversity.domain.File.File;
 import com.example.metauniversity.domain.File.dto.fileDto;
-import com.example.metauniversity.repository.FileRepository;
-import com.example.metauniversity.repository.UserFileRepository;
+import com.example.metauniversity.repository.file.FileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

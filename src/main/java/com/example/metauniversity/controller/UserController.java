@@ -62,4 +62,13 @@ public class UserController {
 
         return "redirect:/user/info";
     }
+
+    /**
+     * 관리자 -> 학생 조회
+     */
+    @GetMapping("/user/search")
+    public String getUserbySearch(userDto.searchDto searchDto, Model model) {
+        model.addAttribute("userData", userService.searchUser(searchDto));
+        return "index.html";
+    }
 }
