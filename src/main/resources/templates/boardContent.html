@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta th:replace="/include/head :: head" />
+    <title>메타넷대학교</title>
+    <link rel="stylesheet" th:href="@{/css/ck-editor.css}">
+</head>
+
+<body>
+<div id="db-wrapper" class="toggled">
+    <!--sidebar 삽입  -->
+    <div th:replace="/include/sidebar :: sidebar"></div>
+    <div id="page-content">
+        <div th:replace="/include/navbar :: navbar"></div>
+        <div class="container-fluid">
+            <div class="row justify-content-center vh-100">
+                <div class="col-xl-6 m-auto">
+                    <div class="card smooth-shadow-md mt-10">
+                        <div class="card-body min-vh-70">
+                            <div class="text-center fs-3 fw-bold">
+                                공지사항
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 m-auto my-2">
+                                    <div class="text border-bottom my-3 fs-4"><span th:text="${boardDto.title}"></span></div>
+                                </div>
+                                <div class="col-12 m-auto my-2 fs-5">
+                                    <div class="min-vh-40 border-bottom"><span th:text="${boardDto.content}"></span></div>
+                                </div>
+
+                                <div class="row align-items-center p-2 m-2">
+                                    <div class="col-2">
+                                        <img class="avatar" src="/img/cute.png" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        안녕하세요 댓글 1번이에용
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="#" class="bi bi-x-lg btn btn-trans"></a>
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="avatar" src="/img/cute.png" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                        안녕하세요 반복문돌려야되요
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="#" class="bi bi-x-lg btn btn-trans"></a>
+                                    </div>
+
+                                    <div class="row mt-9 mb-3 align-items-center">
+                                        <div class="col-2">
+                                            <img class="avatar" src="/img/cute.png">
+                                        </div>
+                                        <input class="col-8 border" placeholder="댓글입력">
+                                        <div class="col-2">
+                                            <div class="btn btn-outline-primary">등록</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- 관리자만 수정이 가능하게끔 -->
+                                <div class="col-6 m-auto my-2">
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-outline-warning form-control mx-2" href='#'>수정</a>
+                                        <a class="btn btn-outline-danger form-control mx-2" th:href="@{'/boardDelete/' + ${boardId}}" >삭제</a>
+                                    </div>
+                                </div>
+                                <!--///////////////// -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/include/scripts :: scripts"></div>
+</body>
+
+</html>

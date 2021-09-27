@@ -5,16 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-    <th:block th:frgment="stuinfo2">
+    <th:block th:frgment="stuInfo3">
 
-        <!--모달 학적 변경-->
-        <div class="modal fade" id="stuinfo3" tabindex="-1" aria-labelledby="stuinfo3" aria-hidden="true">
+        <!--복학 휴학 신청 모달 시작 -->
+        <div class="modal fade" id="stuInfo3" tabindex="-1" aria-labelledby="stuInfo3" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header p-3">
                         <div>
-                            <h4 class="mb-0" id="stuinfo3Label" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">휴학 신청</h4>
-                            <h4 class="mb-0" id="stuinfo3Label" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">복학 신청</h4>
+                            <h4 class="mb-0" id="stuInfo3Label" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">휴학 신청</h4>
+                            <h4 class="mb-0" id="stuInfo3Label" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">복학 신청</h4>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <!--학적 모달 끝-->
+        <!--복학 휴학 모달 끝-->
     </th:block>
 </body>
 </html>

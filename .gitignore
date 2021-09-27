@@ -38,3 +38,6 @@ db_volume
 
 ### VS Code ###
 .vscode/
+
+### aws.yml ###
+src/main/resources/aws.yml

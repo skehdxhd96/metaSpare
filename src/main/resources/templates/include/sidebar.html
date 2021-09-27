@@ -7,36 +7,56 @@
     <nav class="navbar-vertical navbar pt-10">
         <div class="nav-scroller">
             <!-- Brand logo -->
-            <a class="navbar-brand" href="#">
-                <img src="img/cute.png" alt="" />
+            <a class="navbar-brand text-center" th:href="@{home}">
+                메타대학교
             </a>
             <!-- Navbar nav -->
             <ul class="navbar-nav flex-column" id="sideNavbar">
+
                 <li class="nav-item">
-                    <a class="nav-link has-arrow" href="#">
-                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link has-arrow" href="#"
-                       data-bs-toggle="collapse" data-bs-target="#navPages" aria-expanded="false" aria-controls="navPages">
+                    <a class="nav-link has-arrow" href="#" data-bs-toggle="collapse" data-bs-target="#navPages"
+                       aria-expanded="false" aria-controls="navPages">
                         <i data-feather="layers" class="nav-icon icon-xs me-2">
-                        </i> Pages
+                        </i> 개인정보
                     </a>
 
-                    <div id="navPages" class="collapse"
-                         data-bs-parent="#sideNavbar">
+                    <div id="navPages" class="collapse" data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{user/info}">
+                                    내정보
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link has-arrow" href="#">
+                                    설정
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="#!" data-bs-toggle="collapse" data-bs-target="#navAuthentication"
+                       aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 학적관리
+                    </a>
+                    <div id="navAuthentication" class="collapse" data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    Profile
-                                </a>
+                                    신청</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link has-arrow"
-                                   href="#">
-                                    Settings
+                                <a class="nav-link" href="#">
+                                    뭐필요함?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    일딴바꿔
                                 </a>
                             </li>
                         </ul>
@@ -45,55 +65,21 @@
 
                 <!-- Nav item -->
                 <li class="nav-item">
-                    <a class="nav-link has-arrow" href="#"
-                       data-bs-toggle="collapse" data-bs-target="#navAuthentication" aria-expanded="false"
-                       aria-controls="navAuthentication">
-                        <i data-feather="lock" class="nav-icon icon-xs me-2">
-                        </i> Authentication
-                    </a>
-                    <div id="navAuthentication" class="collapse"
-                         data-bs-parent="#sideNavbar">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">
-                                    Sign In</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/register">
-                                    Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="#">
-                                    Forget Password
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </li>
-
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link has-arrow" href="#!"
-                       data-bs-toggle="collapse" data-bs-target="#navComponents" aria-expanded="false"
-                       aria-controls="navComponents">
+                    <a class="nav-link has-arrow" href="#!" data-bs-toggle="collapse" data-bs-target="#navComponents"
+                       aria-expanded="false" aria-controls="navComponents">
                         <i data-feather="database" class="nav-icon icon-xs me-2">
-                        </i> Components
+                        </i> 학사관리
                     </a>
-                    <div id="navComponents" class="collapse"
-                         data-bs-parent="#sideNavbar">
+                    <div id="navComponents" class="collapse" data-bs-parent="#sideNavbar">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link"
-                                   href="@@webRoot/components/accordions.html" aria-expanded="false">
-                                    Accordions
+                                <a class="nav-link" href="#" aria-expanded="false">
+                                    학점따위
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link"
-                                   href="@@webRoot/components/tooltips.html" aria-expanded="false">
-                                    Tooltips
+                                <a class="nav-link" href="#" aria-expanded="false">
+                                    중요하지..
                                 </a>
                             </li>
                         </ul>
@@ -103,6 +89,5 @@
         </div>
     </nav>
     <!-- sidebar 끝!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-
 </th:block>
 </html>

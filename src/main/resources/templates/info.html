@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
@@ -36,7 +36,7 @@
                   <!--사진 col 시작 -->
                   <div class="col-4">
                     <div class="d-flex justify-content-center">
-                      <img th:src="${userData.thumbnailUrl}" class="rounded-circle avatar avatar-xxxl" alt="">
+                      <img th:src="@{${userData.thumbnailUrl}}" class="rounded-circle avatar avatar-xxxl" alt="">
                     </div>
                   </div>
                   <!--사진 col 끝 -->
@@ -47,7 +47,7 @@
                         <label for="name" class="col-sm-2 col-form-label
                                   form-label">이름</label>
                         <div class="col-md-8 col-12">
-                          <input type="name" class="form-control" th:value="${userData.userName}" id="name" required>
+                          <input type="name" class="form-control" th:value="${userData.userName}" id="name" disabled>
                         </div>
                       </div>
                     </div>
@@ -58,7 +58,7 @@
                         <label for="birth" class="col-sm-2 col-form-label
                                     form-label">생년월일</label>
                         <div class="col-md-8 col-12">
-                          <input type="email" class="form-control" th:value="${userData.userBirth}" id="birth" required>
+                          <input type="email" class="form-control" th:value="${userData.userBirth}" id="birth" disabled>
                         </div>
                       </div>
                     </div>
@@ -69,7 +69,7 @@
                         <label for="phone" class="col-sm-2 col-form-label
                                     form-label">전화번호</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userPhone}" id="phone" required>
+                          <input type="text" class="form-control" th:value="${userData.userPhone}" id="phone" disabled>
                         </div>
                       </div>
                     </div>
@@ -80,7 +80,7 @@
                         <label for="email" class="col-sm-2 col-form-label
                                     form-label">이메일</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userEmail}" id="email" required>
+                          <input type="text" class="form-control" th:value="${userData.userEmail}" id="email" disabled>
                         </div>
                       </div>
                     </div>
@@ -90,23 +90,15 @@
                         <label for="address" class="col-sm-2 col-form-label
                                     form-label">주소</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.Address}" id="address" required>
+                          <input type="text" class="form-control" th:value="${userData.address}" id="address" disabled>
                         </div>
                       </div>
                     </div>
-
-                    <!-- row 변경버튼 -->
-                    <!-- <div class="row align-items-center">
-                              <div class="offset-md-4 col-md-8 mt-4">
-                                <button type="submit" class="btn btn-primary"> Save
-                                    Changes</button>
-                              </div>
-                            </div> -->
                   </div>
                 </div>
                 <div class="row mt-3">
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#stuinfo1">수정</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#stuInfo1">수정</button>
                   </div>
                 </div>
               </div>
@@ -132,7 +124,7 @@
                         <label for="student_id" class="col-sm-2 col-form-label
                                   form-label">학번</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userCode}" id="student_id" required>
+                          <input type="text" class="form-control" th:value="${userData.userCode}" id="student_id" disabled>
                         </div>
                       </div>
                     </div>
@@ -142,7 +134,7 @@
                         <label for="college" class="col-sm-2 col-form-label
                                   form-label">학부</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userDepartment}" id="college" required>
+                          <input type="text" class="form-control" th:value="${userData.userDepartment}" id="college" disabled>
                         </div>
                       </div>
                     </div>
@@ -152,7 +144,7 @@
                         <label for="major" class="col-sm-2 col-form-label
                                   form-label">전공</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userMajor}" id="major" required>
+                          <input type="text" class="form-control" th:value="${userData.userMajor}" id="major" disabled>
                         </div>
                       </div>
                     </div>
@@ -162,7 +154,7 @@
                         <label for="minor" class="col-sm-2 col-form-label
                                   form-label">부전공</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userMinor}" id="minor">
+                          <input type="text" class="form-control" th:value="${userData.userMinor}" id="minor" disabled>
                         </div>
                       </div>
                     </div>
@@ -175,7 +167,7 @@
                         <label for="year" class="col-sm-2 col-form-label
                                   form-label">학년</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.userGrade}" id="year" required>
+                          <input type="text" class="form-control" th:value="${userData.userGrade}" id="year" disabled>
                         </div>
                       </div>
                     </div>
@@ -186,7 +178,7 @@
                         <label for="credit" class="col-sm-2 col-form-label
                                     form-label">이수학점</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" placeholder="얘는 잠시 놔둘게요" id="credit" required>
+                          <input type="text" class="form-control" placeholder="얘는 잠시 놔둘게요" id="credit" disabled>
                         </div>
                       </div>
                     </div>
@@ -197,7 +189,7 @@
                         <label for="phone" class="col-sm-2 col-form-label
                                     form-label">학적상태</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.enrollmentStatus}" id="status" required>
+                          <input type="text" class="form-control" th:value="${userData.enrollmentStatus}" id="status" disabled>
                         </div>
                       </div>
                     </div>
@@ -208,27 +200,28 @@
                         <label for="username" class="col-sm-2 col-form-label
                                     form-label">아이디</label>
                         <div class="col-md-8 col-12">
-                          <input type="text" class="form-control" th:value="${userData.accountId}" id="username" required>
+                          <input type="text" class="form-control" th:value="${userData.accountId}" id="username" disabled>
                         </div>
                       </div>
                     </div>
-                    <!-- row 변경버튼 -->
-                    <!-- <div class="row align-items-center">
-                              <div class="offset-md-4 col-md-8 mt-4">
-                                <button type="submit" class="btn btn-primary"> Save
-                                    Changes</button>
-                              </div>
-                            </div> -->
                   </div>
                 </div>
                 <div class="row mt-3">
                   <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#stuinfo2">수정</button>
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#stuinfo3" style="margin-left: 5px;" th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">휴학 신청</button>
-                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#stuinfo3" style="margin-left: 5px;" th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">복학 신청</button>
+                    <div sec:authorize="hasRole('ROLE_WORKER')">
+                      <button class="btn btn-primary" data-bs-toggle="modal"
+                              data-bs-target="#stuInfo2">수정</button>
+                    </div>
+                    <div sec:authorize="hasRole('ROLE_STUDENT')">
+                      <div th:if="${userData.enrollmentStatus.toString().equals('ATTENDING')}">
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#stuInfo3">휴학 신청</button>
+                      </div>
+                      <div th:if="${userData.enrollmentStatus.toString().equals('LEAVE')}">
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#stuInfo3" >복학 신청</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -241,11 +234,11 @@
 
     </div>
   </div>
-  <div th:replace="/modal/stuinfo1"></div>
+  <div th:replace="/modal/stuInfo1"></div>
 
-  <div th:replace="/modal/stuinfo2"></div>
+  <div th:replace="/modal/stuInfo2"></div>
   
-  <div th:replace="/modal/stuinfo3"></div>
+  <div th:replace="/modal/stuInfo3"></div>
 
 
   </div>

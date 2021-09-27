@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta th:replace="/include/head :: head" />
+    <title>메타넷대학교</title>
+</head>
+
+<body>
+<div id="db-wrapper" class="toggled">
+    <!--sidebar 삽입  -->
+    <div th:replace="/include/sidebar :: sidebar"></div>
+    <div id="page-content">
+        <div th:replace="/include/navbar :: navbar"></div>
+
+        <div class="container-fluid">
+            <div class="row  align-items-center justify-content-center vh-100">
+                <div class="col-xl-10 mt-15 mb-5 m-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-6">
+                                <h4 class="text-center fw-bold">수업 검색</h4>
+                            </div>
+
+
+
+                            <!-- 수업 검색 기능 -->
+                            <form action="#" method="GET" class="d-flex justify-content-end me-5">
+                                <!-- row -->
+                                <div class="row w-50">
+                                    <div class="col-3 p-0">
+                                        <select class="form-select" id="search" name="searchList">
+                                            <option value="1">강의명</option>
+                                            <option value="2">학점</option>
+                                            <option value="3">전공</option>
+                                            <option value="4">학년</option>
+                                            <option value="5">수강인원</option>
+                                            <option value="6">강의실</option>
+                                            <option value="7">요일</option>
+                                            <option value="8">시작시간</option>
+                                            <option value="9">마치는시간</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-7 p-0">
+                                        <input type="text" name="search" class="form-control" placeholder="검색명"
+                                               required>
+                                    </div>
+                                    <div class="col-2 p-0">
+                                        <button type="submit"
+                                                class="btn btn-outline-danger form-control ms-1">검색</button>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                            <!-- 수업 검색 기능 끝 -->
+
+                            <!-- row -->
+                            <div class="row p-5">
+                                <table
+                                        class="table table-borderless text-center mt-2 align-middle border-1">
+                                    <thead>
+                                    <tr class="border-1">
+                                        <th class="fs-5">강의명</th>
+                                        <th class="fs-5">학점</th>
+                                        <th class="fs-5">전공</th>
+                                        <th class="fs-5">학년</th>
+                                        <th class="fs-5">수강인원</th>
+                                        <th class="fs-5">강의실</th>
+                                        <th class="fs-5">요일</th>
+                                        <th class="fs-5">시작시간</th>
+                                        <th class="fs-5">마치는시간</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- tr 반복 시작 -->
+                                    <tr class="border-bottom">
+                                        <td>강의명데이터</td>
+                                        <td>학점데이터</td>
+                                        <td>전공데이터</td>
+                                        <td>학년데이터</td>
+                                        <td>수강인원데이터</td>
+                                        <td>강의실데이터</td>
+                                        <td>요일데이터</td>
+                                        <td>시작시간데이터</td>
+                                        <td>마치는시간데이터</td>
+                                        <td>
+                                            <form action="" method="post">
+                                                <button type="submit"
+                                                        class="btn btn-outline-primary">삭제</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <!-- tr 반복 끝 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col-3 d-flex justify-content-end ms-auto me-7">
+                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#classAdd">등록</button>
+                                </div>
+                            </div>
+
+                            <!-- 페이징 처리 부분  -->
+                            <ul class="pagination justify-content-center">
+                                <!--  이전  -->
+
+                                <li class="page-item">
+                                    <a class="page-link" href="#">이전</a>
+                                </li>
+
+                                <!--  페이지 버튼  -->
+
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+
+                                <!--  다음  -->
+
+                                <li class="page-item">
+                                    <a class="page-link" href="#">다음</a>
+                                </li>
+
+                            </ul>
+                            <!-- 페이징 처리 끝 -->
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/modal/classAdd"></div>
+
+<div th:replace="/include/scripts :: scripts"></div>
+</body>
+
+</html>

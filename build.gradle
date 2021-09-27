@@ -87,4 +87,4 @@ configurations {
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
-//querydsl 異붽� �걹
+//querydsl 끝?(한글깨진부분)

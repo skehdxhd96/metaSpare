@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta th:replace="/include/head :: head" />
+  <title>메타넷대학교</title>
+</head>
+
+<body>
+<div id="db-wrapper" class="toggled">
+  <!--sidebar 삽입  -->
+  <div th:replace="/include/sidebar :: sidebar"></div>
+  <div id="page-content">
+    <div th:replace="/include/navbar :: navbar"></div>
+
+    <div class="container-fluid">
+      <div class="row  align-items-center justify-content-center vh-100">
+        <div class="col-10 mt-15">
+          <div class="card p-3">
+            <div class="card-body">
+              <div class="mb-6">
+                <h4 class="text-center fw-bold">학생 검색</h4>
+
+              </div>
+              <form action="#" method="GET" class="d-flex justify-content-end me-2">
+                <!-- row -->
+                <div class="row w-50">
+                  <div class="col-3 p-0">
+                    <select class="form-select" id="search" name="searchPrefix">
+                      <option selected>검색</option>
+                      <option value="1">이름</option>
+                      <option value="2">학번</option>
+                      <option value="3">부서</option>
+                      <option value="4">전공</option>
+                    </select>
+                  </div>
+                  <div class="col-7 p-0">
+                    <input type="text" name="search" class="form-control" placeholder="검색명"
+                           required>
+                  </div>
+                  <div class="col-2 p-0">
+                    <button type="submit"
+                            class="btn btn-outline-danger form-control mx-2">검색</button>
+                  </div>
+                </div>
+              </form>
+              <!-- row -->
+              <div class="mb-3 row">
+                <table class="table table-borderless text-center mt-2 mb-5 p-2 align-middle border-1">
+                  <thead>
+                  <tr class="border-1">
+                    <th class="fs-5">이름</th>
+                    <th class="fs-5">학번</th>
+                    <th class="fs-5">부서</th>
+                    <th class="fs-5">전공</th>
+                    <th class="fs-5">학년</th>
+                    <th class="fs-5">재학여부</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <!-- tr 반복 시작 -->
+                  <tr class="border-bottom">
+                    <td>이름 데이터</td>
+                    <td>학번 데이터</td>
+                    <td>부서 데이터</td>
+                    <td>전공 데이터</td>
+                    <td>학년 데이터</td>
+                    <td>재학여부 데이터</td>
+                  </tr>
+                  <!-- tr 반복 끝 -->
+                  </tbody>
+                </table>
+
+                <!-- 페이징 처리 부분  -->
+                <ul class="pagination justify-content-center">
+                  <!--  이전  -->
+
+                  <li class="page-item">
+                    <a class="page-link" href="#">이전</a>
+                  </li>
+
+                  <!--  페이지 버튼  -->
+
+                  <li class="page-item active">
+                    <a href="#" class="page-link">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a href="#" class="page-link">2</a>
+                  </li>
+
+                  <!--  다음  -->
+
+                  <li class="page-item">
+                    <a class="page-link" href="#">다음</a>
+                  </li>
+
+                </ul>
+                <!-- 페이징 처리 끝 -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+<div th:replace="/include/scripts :: scripts"></div>
+</body>
+
+</html>

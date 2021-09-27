@@ -23,39 +23,25 @@
                                 <a href="#" class="d-none d-sm-inline-block btn btn-outline-primary">공지사항 등록</a>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <h2 href="#" class="text-decoration-none">공지사항</h2>
+                                <h2 class="text-decoration-none">공지사항</h2>
                             </div>
                             <table class="table table-bordered text-center mt-2 mb-5">
-
+                                <thead>
                                 <tr>
-                                    <td>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-12">
-                                                <a href="#" class="text-decoration-none">hi</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <th class="w-75">title</th>
+                                    <th>username</th>
+                                    <th>createdat</th>
                                 </tr>
+                                </thead>
 
-                                <tr>
-                                    <td>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-12">
-                                                <a href="#" class="text-decoration-none">hi</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                <tbody>
+                                <tr th:each="board : ${boardList}">
+                                    <td><a th:text="${board.title}"
+                                           th:href="@{'/boardDetail/' + ${board.boardId}}"></a></td>
+                                    <td th:text="${board.userName}"></td>
+                                    <td th:text="${#temporals.format(board.created_date,'yyyy-MM-dd')}"></td>
                                 </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col-12">
-                                                <a href="#" class="text-decoration-none">hi</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                </tbody>
 
                             </table>
                             <!-- 페이징 처리 부분  -->

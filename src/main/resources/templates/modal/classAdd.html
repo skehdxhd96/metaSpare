@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+<th:block th:frgment="classAdd">
+  <!--강의 등록-->
+  <div class="modal fade" id="classAdd" tabindex="-1" aria-labelledby="classAdd" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header p-3">
+          <div>
+            <h4 class="mb-0" id="stuInfo1Label">강의 등록</h4>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+          </button>
+        </div>
+        <div class="modal-body p-5">
+          <!-- card body -->
+          <div class="card-body">
+            <form method="POST" action="#">
+              <div class=" mb-6">
+                <h4 class="fs-1 border-bottom text-sm-center">강의 등록</h4>
+              </div>
+              <div class="row align-items-center">
+
+                <div class="col-6">
+                  <!-- row 이름열 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="nameModal" class="col-sm-3 col-form-label
+                                            form-label">강의명</label>
+                      <div class="col-md-8 col-12">
+                        <input type="name" class="form-control" name="userName"
+                               id="nameModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 생년월일 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="gpaModal" class="col-sm-3 col-form-label
+                                              form-label">학점</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="userBirth"
+                               id="gpaModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 전화번호 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="majorModal" class="col-sm-3 col-form-label
+                                              form-label">전공</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="userPhone"
+                               id="majorModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 이메일 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="yearModal" class="col-sm-3 col-form-label
+                                              form-label">학년</label>
+                      <div class="col-md-8 col-12">
+                        <input type="email" class="form-control" name="userEmail"
+                               id="yearModal" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- row 주소 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="maxNumModal" class="col-sm-3 col-form-label
+                                              form-label">수강인원</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="Address"
+                               id="maxNumModal" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <!-- row 주소 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="locationModal" class="col-sm-3 col-form-label
+                                              form-label">강의실</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="Address"
+                               id="locationModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 주소 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="dayModal" class="col-sm-3 col-form-label
+                                              form-label">요일</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="Address" id="dayModal"
+                               required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 주소 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="startTimeModal" class="col-sm-3 col-form-label
+                                              form-label">시작시간</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="Address"
+                               id="startTimeModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 주소 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="endTimeModal" class="col-sm-3 col-form-label
+                                              form-label">마치는시간</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="Address"
+                               id="endTimeModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary m-2">수정</button>
+                  <button type="button" class="btn btn-secondary m-2"
+                          data-bs-dismiss="modal">취소</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 학생정보 모달 끝-->
+</th:block>
+</body>
+
+</html>
