@@ -1,10 +1,12 @@
 package com.example.metauniversity.service;
 
 import com.example.metauniversity.domain.User.User;
+import com.example.metauniversity.domain.User.UserTyped;
 import com.example.metauniversity.domain.subject.dto.subjectDto;
 import com.example.metauniversity.domain.subject.subject;
 import com.example.metauniversity.domain.subject.timeTable;
 import com.example.metauniversity.exception.CannotAddSubjectException;
+import com.example.metauniversity.exception.NoCreateSubjectException;
 import com.example.metauniversity.exception.NoSuchSubjectException;
 import com.example.metauniversity.exception.NoSuchTimeTableException;
 import com.example.metauniversity.repository.subject.subjectRepository;
@@ -26,24 +28,26 @@ public class subjectService {
     private final subjectRepository subjectRepository;
     private final timeTableRepository timeTableRepository;
 
-//    @Transactional
-//    public void addSubject(subjectDto.create createDto, User user) {
-//
-//        /**
-//         * 예외 처리
-//         * 강의실이 같은 subject 데이터를 불러와서
-//         * 요일-시간 겹치면 오류
-//         */
-//
-//        if(user.getUsersData().getUserType() != UserTyped.WORKER) {
-//            throw new NoCreateSubjectException("관리자만 등록이 가능합니다.");
-//        }
-//
-//        List<subject> subjects = subjectRepository.findAllByClassRoom(createDto.getClassRoom());
-//        for (subject subject : subjects) {
-//
-//        }
-//    }
+    @Transactional
+    public void addSubject(subjectDto.create createDto, User user) {
+
+        /**
+         * 예외 처리
+         * 강의실이 같은 subject 데이터를 불러와서
+         * 요일-시간 겹치면 오류
+         */
+
+        if(!user.getUsersData().getUserType().equals(UserTyped.WORKER)) {
+            throw new NoCreateSubjectException("관리자만 등록이 가능합니다.");
+        }
+
+        if(AboutTime.BooleanCreateSubject(createDto, subjectRepository.findAllByClassRoom(createDto.getClassRoom()))) {
+            System.out.println("isMajor : " + createDto.getIsMajor());
+            subjectRepository.save(subject.create(createDto, user));
+        } else {
+            throw new NoCreateSubjectException("해당 강의실의 원하시는 시간대는 이미 예약 되었습니다.");
+        }
+    }
 
     public List<subjectDto.getList> getAll() {
         return subjectRepository.getAllSubject().stream()

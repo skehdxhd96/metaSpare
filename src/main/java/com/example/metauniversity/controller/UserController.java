@@ -64,11 +64,12 @@ public class UserController {
     }
 
     /**
-     * 관리자 -> 학생 조회
+     * 학생 조회 - 관리자
      */
-    @GetMapping("/user/search")
-    public String getUserbySearch(userDto.searchDto searchDto, Model model) {
-        model.addAttribute("userData", userService.searchUser(searchDto));
-        return "index.html";
+    @GetMapping("/user/studentsList")
+    public String studentsList(Model model, @ModelAttribute userDto.searchDto searchDto, @AuthenticationPrincipal CustomUserDetails currentUser) {
+
+        model.addAttribute("studentsList", userService.userSearch(searchDto, currentUser.getUser()));
+        return "/studentsList";
     }
 }

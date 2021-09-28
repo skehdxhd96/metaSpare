@@ -5,8 +5,10 @@ import com.example.metauniversity.domain.File.File;
 import com.example.metauniversity.domain.File.UserFile;
 import com.example.metauniversity.domain.User.EnrollmentStatus;
 import com.example.metauniversity.domain.User.User;
+import com.example.metauniversity.domain.User.UserTyped;
 import com.example.metauniversity.domain.User.UsersData;
 import com.example.metauniversity.domain.User.dto.userDto;
+import com.example.metauniversity.exception.CannotSearchUserException;
 import com.example.metauniversity.exception.NoSuchUserException;
 import com.example.metauniversity.repository.user.UserFileRepository;
 import com.example.metauniversity.repository.user.UserRepository;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,7 +77,15 @@ public class UserService {
         usersData.updateEnroll(enrollmentStatus);
     }
 
-    public List<userDto.searchResponse> searchUser(userDto.searchDto searchDto) {
+    /**
+     * 관리자 - 학생 조회
+     */
+    public List<userDto.searchResponse> userSearch(userDto.searchDto searchDto, User user) {
+
+        if(!user.getUsersData().getUserType().equals(UserTyped.WORKER)) {
+            throw new CannotSearchUserException("직원만 조회할 수 있습니다.");
+        }
+
         return userRepository.getUserBySearch(searchDto)
                 .stream().map(s -> new userDto.searchResponse(s)).collect(Collectors.toList());
     }

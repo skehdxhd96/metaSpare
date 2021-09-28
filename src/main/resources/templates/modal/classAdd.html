@@ -16,17 +16,11 @@
           <div>
             <h4 class="mb-0" id="stuInfo1Label">강의 등록</h4>
           </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-
-          </button>
         </div>
         <div class="modal-body p-5">
           <!-- card body -->
           <div class="card-body">
-            <form method="POST" action="#">
-              <div class=" mb-6">
-                <h4 class="fs-1 border-bottom text-sm-center">강의 등록</h4>
-              </div>
+            <form method="POST" action="/schedule/create">
               <div class="row align-items-center">
 
                 <div class="col-6">
@@ -36,8 +30,20 @@
                       <label for="nameModal" class="col-sm-3 col-form-label
                                             form-label">강의명</label>
                       <div class="col-md-8 col-12">
-                        <input type="name" class="form-control" name="userName"
+                        <input type="name" class="form-control" name="subjectTitle"
                                id="nameModal" required>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- row 교수명 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="nameModal" class="col-sm-3 col-form-label
+                                            form-label">교수명</label>
+                      <div class="col-md-8 col-12">
+                        <input type="name" class="form-control" name="professorName"
+                               id="professorModal" th:value="${user.userName}" readonly required>
                       </div>
                     </div>
                   </div>
@@ -48,7 +54,7 @@
                       <label for="gpaModal" class="col-sm-3 col-form-label
                                               form-label">학점</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="userBirth"
+                        <input type="text" class="form-control" name="subjectPoints"
                                id="gpaModal" required>
                       </div>
                     </div>
@@ -60,8 +66,22 @@
                       <label for="majorModal" class="col-sm-3 col-form-label
                                               form-label">전공</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="userPhone"
-                               id="majorModal" required>
+                        <select class="form-select" id="majorModal" name="isMajor">
+                          <option value="true">전공</option>
+                          <option value="false">교양</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 소속학부 -->
+                  <div class="mb-3 row">
+                    <div class="d-flex justify-content-center">
+                      <label for="maxNumModal" class="col-sm-3 col-form-label
+                                              form-label">소속학부</label>
+                      <div class="col-md-8 col-12">
+                        <input type="text" class="form-control" name="subjectDepaetment"
+                               id="maxNumModal" required>
                       </div>
                     </div>
                   </div>
@@ -70,25 +90,27 @@
                   <div class="mb-3 row">
                     <div class="d-flex justify-content-center">
                       <label for="yearModal" class="col-sm-3 col-form-label
-                                              form-label">학년</label>
+                                              form-label">대상학년</label>
                       <div class="col-md-8 col-12">
-                        <input type="email" class="form-control" name="userEmail"
+                        <input type="text" class="form-control" name="subjectGrade"
                                id="yearModal" required>
                       </div>
                     </div>
                   </div>
+
                   <!-- row 주소 -->
                   <div class="mb-3 row">
                     <div class="d-flex justify-content-center">
                       <label for="maxNumModal" class="col-sm-3 col-form-label
                                               form-label">수강인원</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="Address"
-                               id="maxNumModal" required>
+                        <input type="text" class="form-control" name="limited"
+                               id="maxNumModal3" required>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="col-6">
                   <!-- row 주소 -->
                   <div class="mb-3 row">
@@ -96,7 +118,7 @@
                       <label for="locationModal" class="col-sm-3 col-form-label
                                               form-label">강의실</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="Address"
+                        <input type="text" class="form-control" name="classRoom"
                                id="locationModal" required>
                       </div>
                     </div>
@@ -108,8 +130,13 @@
                       <label for="dayModal" class="col-sm-3 col-form-label
                                               form-label">요일</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="Address" id="dayModal"
-                               required>
+                        <select class="form-select" id="dayModal" name="day">
+                          <option value="Mon">월</option>
+                          <option value="Tue">화</option>
+                          <option value="Wed">수</option>
+                          <option value="Thu">목</option>
+                          <option value="Fri">금</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -120,8 +147,8 @@
                       <label for="startTimeModal" class="col-sm-3 col-form-label
                                               form-label">시작시간</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="Address"
-                               id="startTimeModal" required>
+                        <input type="text" class="form-control" name="startTime"
+                               id="startTimeModal" placeholder="ex : 13:00" required>
                       </div>
                     </div>
                   </div>
@@ -132,8 +159,8 @@
                       <label for="endTimeModal" class="col-sm-3 col-form-label
                                               form-label">마치는시간</label>
                       <div class="col-md-8 col-12">
-                        <input type="text" class="form-control" name="Address"
-                               id="endTimeModal" required>
+                        <input type="text" class="form-control" name="endTime"
+                               id="endTimeModal" placeholder="ex : 15:00" required>
                       </div>
                     </div>
                   </div>
@@ -141,9 +168,16 @@
 
                 </div>
               </div>
+              <!-- row 주소 -->
               <div class="row mt-3">
+                <label for="maxNumModal" class="col-sm-3 col-form-label
+                                             form-label">강의계획서</label>
+                <div class="col-md-8 col-12">
+                  <textarea rows = "30" cols="65" class="form-control" name="subjectIntro"
+                            id="maxNumModal2" required></textarea>
+                </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary m-2">수정</button>
+                  <button type="submit" class="btn btn-primary m-2">등록</button>
                   <button type="button" class="btn btn-secondary m-2"
                           data-bs-dismiss="modal">취소</button>
                 </div>

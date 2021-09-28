@@ -30,7 +30,7 @@ public class timeTableRepositoryImpl implements timeTableRepositoryCustom{
                 .from(timeTable)
                 .join(timeTable.subject).fetchJoin()
                 .where(timeTable.user.id.eq(userId)
-                        .and(timeTable.isEnroll.eq(true)))
+                        .and(timeTable.status.eq(true)))
                 .fetch();
     }
 
@@ -45,7 +45,7 @@ public class timeTableRepositoryImpl implements timeTableRepositoryCustom{
                 .from(timeTable)
                 .where(timeTable.subject.id.eq(subjectId)
                         .and(timeTable.user.id.eq(userId)
-                                .and(timeTable.isEnroll.eq(false))))
+                                .and(timeTable.status.eq(false))))
                 .fetchFirst();
 
         return fetchOne != null;
@@ -58,7 +58,7 @@ public class timeTableRepositoryImpl implements timeTableRepositoryCustom{
                 .join(timeTable.subject).fetchJoin()
                 .where(timeTable.subject.id.eq(subjectId)
                         .and(timeTable.user.id.eq(userId)
-                                .and(timeTable.isEnroll.eq(false))))
+                                .and(timeTable.status.eq(false))))
                 .fetchOne();
     }
 
@@ -69,7 +69,7 @@ public class timeTableRepositoryImpl implements timeTableRepositoryCustom{
                 .join(timeTable.subject).fetchJoin()
                 .join(timeTable.user).fetchJoin()
                 .where(timeTable.user.id.eq(userId)
-                        .and(timeTable.isEnroll.eq(true)))
+                        .and(timeTable.status.eq(true)))
                 .fetch();
     }
 }

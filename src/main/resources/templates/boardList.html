@@ -35,7 +35,7 @@
                                 </thead>
 
                                 <tbody>
-                                <tr th:each="board : ${boardList}">
+                                <tr th:each="board : ${boardList.boardDtoList}">
                                     <td><a th:text="${board.title}"
                                            th:href="@{'/boardDetail/' + ${board.boardId}}"></a></td>
                                     <td th:text="${board.userName}"></td>
@@ -45,28 +45,29 @@
 
                             </table>
                             <!-- 페이징 처리 부분  -->
-                            <ul class="pagination justify-content-center">
+                            <ul class="pagination justify-content-center" 
+                            	th:with="pageNumber = ${boardList.pageNumber},
+							            pageSize = ${boardList.pageSize},
+							            totalPages = ${boardList.totalPages},
+							            pazingSize = 10,
+                            			start=${T(Math).floor(pageNumber / pazingSize) * pazingSize + 1},
+                            			tempEndPage = ${start + pazingSize - 1},
+              							last=${tempEndPage < totalPages ? tempEndPage : totalPages}">
+                            
                                 <!--  이전  -->
-
                                 <li class="page-item">
-                                    <a class="page-link" href="#">이전</a>
+                                    <a class="page-link" th:href="${pageNumber==0} ? '#' : @{/boardList(page=${pageNumber})}">이전</a>
                                 </li>
 
                                 <!--  페이지 버튼  -->
-
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
+                                <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == pageNumber + 1} ? 'page-item active' : 'page-item'">
+							    	<a class="page-link" th:text="${page}" th:href="@{/boardList(page=${page})}"></a>
+							  	</li>
 
                                 <!--  다음  -->
-
                                 <li class="page-item">
-                                    <a class="page-link" href="#">다음</a>
+                                    <a class="page-link" th:href="${pageNumber==totalPages-1} ? '#' : @{/boardList(page=${pageNumber+2})}">다음</a>
                                 </li>
-
                             </ul>
                             <!-- 페이징 처리 끝 -->
                         </div>

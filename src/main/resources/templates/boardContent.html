@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta th:replace="/include/head :: head" />
     <title>메타넷대학교</title>
     <link rel="stylesheet" th:href="@{/css/ck-editor.css}">
+    <script src="/ckeditor5/build/ckeditor.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,14 @@
                                     <div class="text border-bottom my-3 fs-4"><span th:text="${boardDto.title}"></span></div>
                                 </div>
                                 <div class="col-12 m-auto my-2 fs-5">
-                                    <div class="min-vh-40 border-bottom"><span th:text="${boardDto.content}"></span></div>
+                                    <div class="min-vh-40 border-bottom ck-content"><span th:utext="${boardDto.content}"></span></div>
+                                </div>
+                                <div class="col-12 m-auto my-2">
+                                    <div class="border-bottom">
+                                        <div th:each="file : ${boardDto.filesList}">
+                                            <a th:text="${file.originalName}" th:href="${file.url}" th:attr="download=${file.originalName}"></a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row align-items-center p-2 m-2">
@@ -67,7 +74,7 @@
                                 <!-- 관리자만 수정이 가능하게끔 -->
                                 <div class="col-6 m-auto my-2">
                                     <div class="d-flex justify-content-between">
-                                        <a class="btn btn-outline-warning form-control mx-2" href='#'>수정</a>
+                                        <a class="btn btn-outline-warning form-control mx-2" th:href="@{'/boardEdit/' + ${boardId}}">수정</a>
                                         <a class="btn btn-outline-danger form-control mx-2" th:href="@{'/boardDelete/' + ${boardId}}" >삭제</a>
                                     </div>
                                 </div>
@@ -84,5 +91,7 @@
 </div>
 <div th:replace="/include/scripts :: scripts"></div>
 </body>
+
+
 
 </html>

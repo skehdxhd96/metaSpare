@@ -39,6 +39,4 @@ public class HomeController {
     public String denied() {
         return "error";
     }
-
-
 }

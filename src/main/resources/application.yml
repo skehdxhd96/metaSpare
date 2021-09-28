@@ -5,13 +5,13 @@ spring:
       enabled: true
     livereload:
       enabled: true
-    freemarker:
-      cache: false
+  freemarker:
+    cache: false
   jpa:
     show-sql: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true

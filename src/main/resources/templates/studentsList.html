@@ -17,15 +17,22 @@
       <div class="row  align-items-center justify-content-center vh-100">
         <div class="col-10 mt-15">
           <div class="card p-3">
+          <div class="card p-2">
             <div class="card-body">
               <div class="mb-6">
                 <h4 class="text-center fw-bold">학생 검색</h4>
-
               </div>
-              <form action="#" method="GET" class="d-flex justify-content-end me-2">
+              <form th:action="@{studentsList}" method="GET" class="d-flex justify-content-end me-2">
                 <!-- row -->
                 <div class="row w-50">
                   <div class="col-3 p-0">
+<<<<<<< Updated upstream
+                    <input type="text" name="userName" class="form-control" placeholder="이름">
+=======
+              <form action="#" method="GET">
+                <!-- row -->
+                <div class="row m-3">
+                  <div class="col-2 p-0">
                     <select class="form-select" id="search" name="searchPrefix">
                       <option selected>검색</option>
                       <option value="1">이름</option>
@@ -33,10 +40,13 @@
                       <option value="3">부서</option>
                       <option value="4">전공</option>
                     </select>
+>>>>>>> Stashed changes
                   </div>
-                  <div class="col-7 p-0">
-                    <input type="text" name="search" class="form-control" placeholder="검색명"
-                           required>
+                  <div class="col-3 p-0">
+                    <input type="text" name="userCode" class="form-control" placeholder="학번">
+                  </div>
+                  <div class="col-3 p-0">
+                    <input type="text" name="userMajor" class="form-control" placeholder="전공">
                   </div>
                   <div class="col-2 p-0">
                     <button type="submit"
@@ -59,13 +69,13 @@
                   </thead>
                   <tbody>
                   <!-- tr 반복 시작 -->
-                  <tr class="border-bottom">
-                    <td>이름 데이터</td>
-                    <td>학번 데이터</td>
-                    <td>부서 데이터</td>
-                    <td>전공 데이터</td>
-                    <td>학년 데이터</td>
-                    <td>재학여부 데이터</td>
+                  <tr class="border-bottom" th:each="student : ${studentsList}">
+                    <td th:text="${student.userName}">이름 데이터</td>
+                    <td th:text="${student.userCode}">학번 데이터</td>
+                    <td th:text="${student.userDepartment}">부서 데이터</td>
+                    <td th:text="${student.userMajor}">전공 데이터</td>
+                    <td th:text="${student.userGrade}">학년 데이터</td>
+                    <td th:text="${student.enrollmentStatus}">재학여부 데이터</td>
                   </tr>
                   <!-- tr 반복 끝 -->
                   </tbody>
@@ -98,6 +108,72 @@
                 <!-- 페이징 처리 끝 -->
 
               </div>
+                  <div class="col-5 p-0">
+                    <input type="text" name="search" class="form-control" placeholder="검색명"
+                           required>
+                  </div>
+                  <div class="col-1 p-0">
+                    <button type="submit"
+                            class="btn btn-outline-danger form-control mx-2">검색</button>
+                  </div>
+
+
+                </div>
+                <!-- row -->
+                <div class="mb-3 row">
+                  <table class="table table-bordered text-center mt-2 mb-5">
+                    <thead>
+                    <tr>
+                      <th>이름</th>
+                      <th>학번</th>
+                      <th>부서</th>
+                      <th>전공</th>
+                      <th>학년</th>
+                      <th>재학여부</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- tr 반복 시작 -->
+                    <tr>
+                      <td>이름 데이터</td>
+                      <td>학번 데이터</td>
+                      <td>부서 데이터</td>
+                      <td>전공 데이터</td>
+                      <td>학년 데이터</td>
+                      <td>재학여부 데이터</td>
+                    </tr>
+                    <!-- tr 반복 끝 -->
+                    </tbody>
+                  </table>
+
+                  <!-- 페이징 처리 부분  -->
+                  <ul class="pagination justify-content-center">
+                    <!--  이전  -->
+
+                    <li class="page-item">
+                      <a class="page-link" href="#">이전</a>
+                    </li>
+
+                    <!--  페이지 버튼  -->
+
+                    <li class="page-item active">
+                      <a href="#" class="page-link">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link">2</a>
+                    </li>
+
+                    <!--  다음  -->
+
+                    <li class="page-item">
+                      <a class="page-link" href="#">다음</a>
+                    </li>
+
+                  </ul>
+                  <!-- 페이징 처리 끝 -->
+
+                </div>
+              </form>
             </div>
           </div>
         </div>

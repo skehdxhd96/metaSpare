@@ -19,13 +19,15 @@ public class subjectDto {
     public static class create {
 
         private String subjectTitle;
+        private String professorName;
         private Integer subjectPoints;
-        private String subjectIntro;
-        private String subjectDepaetment;
-        private Integer subjectGrades;
+        private Boolean isMajor;
+        private Integer subjectGrade;
         private Integer limited;
         private String classRoom;
         private String day;
+        private String subjectIntro;
+        private String subjectDepaetment;
         private String startTime;
         private String endTime;
     }
@@ -40,6 +42,7 @@ public class subjectDto {
         private String professor;
         private String subjectTitle;
         private Integer subjectPoints;
+        private String isMajor;
         private String subjectDepaetment;
         private Integer subjectGrades;
         private Integer limited;
@@ -51,6 +54,7 @@ public class subjectDto {
         public getList(subject subject) {
             this.professor = subject.getUser().getUsersData().getUserName();
             this.subjectTitle = subject.getSubjectTitle();
+            this.isMajor = subject.getIsMajor() ? "전공" : "교양";
             this.subjectPoints = subject.getSubjectPoints();
             this.subjectGrades = subject.getSubjectGrades();
             this.limited = subject.getLimited();
@@ -80,9 +84,8 @@ public class subjectDto {
     @NoArgsConstructor
     public static class search {
         private String subjectTitle;
-        private String subjectDepartment;
         private Integer subjectPoints;
-        private Boolean isMajor;
+        private String isMajor;
     }
 
     @Getter
@@ -93,5 +96,15 @@ public class subjectDto {
     public static class enroll {
         private String subjectTitle;
         private Boolean status;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class userdata {
+        private Long userId;
+        private String userName;
     }
 }

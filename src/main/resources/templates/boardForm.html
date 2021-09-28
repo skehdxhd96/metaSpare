@@ -4,7 +4,13 @@
 <head>
     <meta th:replace="/include/head :: head" />
     <title>공지사항 등록</title>
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script>
+
+    <script th:src="@{/ckeditor5/build/ckeditor.js}"></script>
+    <style type="text/css">
+        .ck-editor__editable {
+            height: 450px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,24 +24,29 @@
             <div class="row justify-content-center vh-100">
                 <div class="col-xl-6 m-auto">
                     <div class="card smooth-shadow-md">
-                        <div class="card-body">
+                        <div class="card-body min-vh-70">
                             <div class="text-center fs-3 fw-bold">
                                 공지사항
                             </div>
 
-                            <form class="row" method="POST" th:action="@{/boardForm}">
+                            <form class="row" method="POST" th:action="@{/boardForm}" enctype="multipart/form-data">
                                 <div class="col-4 m-auto my-2 d-none">
-                                    <input class="form-control text-center" value="작성자 받아와!" placeholder="작성자">
+                                    <input class="form-control text-center" id="writer" value="작성자 받아와!" placeholder="작성자">
                                 </div>
                                 <div class="col-10 m-auto my-2">
-                                    <input class="form-control text-center" placeholder="제목" name="title">
+                                    <input class="form-control text-center" id="title" placeholder="제목" name="title">
                                 </div>
                                 <div class="col-10 m-auto my-2">
-                                    <div id="editor">
-                                        <p>여기다가 수정 눌렀을때 불러온 데이터 뿌려주면됩니다. 여기 p 태그!</p>
+                                    <textarea class="form-control" rows="20" placeholder="내용" id="ckeditor" name="content"></textarea>
+                                </div>
+                                <!-- 파일 업로드 -->
+                                <div id="uploadFiles">
+                                    <div class="col-10 m-auto my-2">
+                                        <input type="file" class="col-10" id="file" name="fileData" />
+                                        <button type="button" class="bi bi-x-lg btn btn-trans" name="fileDelete" style="visibility: hidden;"></button>
                                     </div>
                                 </div>
-                                <div class="col-6 m-auto my-2">
+                                <div class="col-4 m-auto my-2">
                                     <div class="d-flex justify-content-between">
                                         <input type="submit" value="등록" class="btn btn-primary form-control mx-5">
                                         <a class="btn btn-warning form-control mx-5" href='#'>취소</a>
@@ -50,19 +61,38 @@
     </div>
 </div>
 <div th:replace="/include/scripts :: scripts"></div>
-
 </body>
+<script th:src="@{/ckeditor5/build/ckeditorCustom.js}"></script>
+<script>
+    $(document).on('change', "#uploadFiles [type='file']", function() {
+        if ($(this).val().length != 0) {
+            $(this).attr("name", "uploadFile");
+            $(this).next().css('visibility', 'visible');
+        } else {
+            $(this).attr("name", "fileData");
+            $(this).next().css('visibility', 'hidden');
+        }
 
+        addFile();
 
+    });
 
- <script>
-     ClassicEditor
-         .create( document.querySelector( '#editor' ) )
-         .catch( error => {
-             console.error( error );
-         } );
-    </script>
+    $(document).on('click', "[name='fileDelete']", function() {
 
+        $(this).parent().remove();
+        addFile();
 
+    });
 
+    function addFile() {
+        if ($("[name='fileData']").length == 0) {
+            $("#uploadFiles").append(
+                '<div class="col-10 m-auto my-2">'
+                +'<input type="file" class="col-10" id="file" name="fileData" />'
+                +'    <button type="button" class="bi bi-x-lg btn btn-trans" name="fileDelete" style="visibility: hidden;"></button>'
+                +'</div>');
+        }
+    }
+
+</script>
 </html>

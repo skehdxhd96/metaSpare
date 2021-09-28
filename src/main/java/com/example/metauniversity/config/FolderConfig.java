@@ -11,4 +11,5 @@ import org.springframework.stereotype.Component;
 public class FolderConfig {
 
     private String user = "user";
+    private String board = "board";    
 }

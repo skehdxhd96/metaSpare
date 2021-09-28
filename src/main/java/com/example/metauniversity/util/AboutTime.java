@@ -1,5 +1,6 @@
 package com.example.metauniversity.util;
 
+import com.example.metauniversity.domain.subject.dto.subjectDto;
 import com.example.metauniversity.domain.subject.subject;
 import com.example.metauniversity.domain.subject.timeTable;
 
@@ -14,6 +15,20 @@ public class AboutTime {
             if(mySubject.getSubject().getDay().equals(subject.getDay())) { //요일이 같으면
                 if(compareTime(subject.getEndTime(), mySubject.getSubject().getStartTime()) >= 0
                 || compareTime(mySubject.getSubject().getEndTime(), subject.getStartTime()) >= 0) {
+                    continue;
+                }
+                return false;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    public static Boolean BooleanCreateSubject(subjectDto.create createDto, List<subject> allByClassRoom) {
+        for (subject subject : allByClassRoom) {
+            if(subject.getDay().equals(createDto.getDay())) {
+                if(compareTime(createDto.getEndTime(), subject.getStartTime()) >= 0
+                || compareTime(subject.getEndTime(), createDto.getStartTime()) >= 0) {
                     continue;
                 }
                 return false;

@@ -5,6 +5,7 @@ import com.example.metauniversity.domain.User.dto.userDto;
 import com.example.metauniversity.domain.User.dto.userDto.getMyInfoResponse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table(name = "usersData")
 @Getter
+@Builder
 @DynamicUpdate
 public class UsersData {
 

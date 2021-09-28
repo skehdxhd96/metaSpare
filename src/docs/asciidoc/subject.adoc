@@ -1,0 +1,68 @@
+= RoomApiDocs
+NDM 28/09/2021
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+:safe-mode-level: 0
+
+[[subject-enroll]]
+== 수강신청 기능 api
+
+=== http-request
+include::{snippets}/subject-enroll/http-request.adoc[]
+
+=== http-response
+include::{snippets}/subject-enroll/http-response.adoc[]
+
+=== path-parameters
+include::{snippets}/subject-enroll/path-parameters.adoc[]
+
+=== request-headers
+include::{snippets}/subject-enroll/request-headers.adoc[]
+
+=== response-body
+include::{snippets}/subject-enroll/response-body.adoc[]
+
+=== response-fields
+include::{snippets}/subject-enroll/response-fields.adoc[]
+
+[[subject-cancel]]
+== 수강취소 기능 api
+
+=== http-request
+include::{snippets}/subject-cancel/http-request.adoc[]
+
+=== http-response
+include::{snippets}/subject-cancel/http-response.adoc[]
+
+=== path-parameters
+include::{snippets}/subject-cancel/path-parameters.adoc[]
+
+=== request-headers
+include::{snippets}/subject-cancel/request-headers.adoc[]
+
+=== response-body
+include::{snippets}/subject-cancel/response-body.adoc[]
+
+=== response-fields
+include::{snippets}/subject-cancel/response-fields.adoc[]
+
+[[subject-filter]]
+== 수업과목 필터링 기능 api
+
+=== http-request
+include::{snippets}/subject-filter/http-request.adoc[]
+
+=== http-response
+include::{snippets}/subject-filter/http-response.adoc[]
+
+=== response-body
+include::{snippets}/subject-filter/response-body.adoc[]
+
+=== response-fields
+include::{snippets}/subject-filter/response-fields.adoc[]

@@ -31,7 +31,6 @@ public class subjectRepositoryImpl implements subjectRepositoryCustom {
         return queryFactory.select(subject)
                 .from(subject)
                 .where(subjectTitleContains(search.getSubjectTitle()),
-                        subjectDepartmentContains(search.getSubjectDepartment()),
                         subjectPointsEq(search.getSubjectPoints()),
                         isMajorEq(search.getIsMajor()))
                 .fetch();
@@ -53,16 +52,6 @@ public class subjectRepositoryImpl implements subjectRepositoryCustom {
         return subject.subjectTitle.contains(subjectTitle);
     }
 
-
-
-    private BooleanExpression subjectDepartmentContains(String subjectDepartment) {
-        if(subjectDepartment == null) {
-            return null;
-        }
-
-        return subject.subjectDepartment.contains(subjectDepartment);
-    }
-
     private BooleanExpression subjectPointsEq(Integer subjectPoints) {
         if(subjectPoints == null) {
             return null;
@@ -71,11 +60,15 @@ public class subjectRepositoryImpl implements subjectRepositoryCustom {
         return subject.subjectPoints.eq(subjectPoints);
     }
 
-    private BooleanExpression isMajorEq(Boolean isMajor) {
+    private BooleanExpression isMajorEq(String isMajor) {
         if(isMajor == null) {
-            subject.isMajor.eq(true);
+            return null;
+        } else if(isMajor.equals("false")) {
+            return subject.isMajor.eq(false);
+        } else if(isMajor.equals("true")) {
+            return subject.isMajor.eq(true);
         }
 
-        return subject.isMajor.eq(isMajor);
+        return null;
     }
 }

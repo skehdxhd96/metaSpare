@@ -4314,6 +4314,22 @@ fieldset:disabled .btn {
 .btn-white:disabled,
 .btn-white.disabled {
   color: #000;
+=======
+  color: #000;
+  background-color: white;
+  border-color: white;
+}
+.btn-check:checked + .btn-white:focus,
+.btn-check:active + .btn-white:focus,
+.btn-white:active:focus,
+.btn-white.active:focus,
+.show > .btn-white.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
+}
+.btn-white:disabled,
+.btn-white.disabled {
+  color: #000;
+>>>>>>> 0d1647b40143f8dfb2b04bf252fbdef4c6e138d9
   background-color: #fff;
   border-color: #fff;
 }
@@ -9619,6 +9635,34 @@ fieldset:disabled .btn {
   min-height: 70vh !important;
 }
 
+.mh-100 {
+  max-height: 100% !important;
+}
+
+.mh-auto {
+  max-height: auto !important;
+}
+
+.vh-100 {
+  height: 100vh !important;
+}
+.main-img-size{
+  height: 70vh !important;
+  min-height: 70vh !important;
+  object-fit: cover !important;
+
+}
+
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+
+.min-vh-70 {
+  min-height: 70vh !important;
+}
+
+>>>>>>> 0d1647b40143f8dfb2b04bf252fbdef4c6e138d9
 .min-vh-40 {
   min-height: 40vh !important;
 }
